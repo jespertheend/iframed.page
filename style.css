@@ -11,6 +11,7 @@ html, body, #pageContainer {
 	padding: 40px;
 	flex-direction: column;
 	gap: 20px;
+	justify-content: center;
 }
 
 iframe {

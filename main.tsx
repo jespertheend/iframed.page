@@ -1,5 +1,5 @@
 import { serve, Status } from "https://deno.land/std@0.185.0/http/mod.ts";
-import { h, JSX } from "https://esm.sh/preact@10.5.15";
+import { Fragment, h, JSX } from "https://esm.sh/preact@10.5.15";
 import { renderToString } from "https://esm.sh/preact-render-to-string@5.1.19?deps=preact@10.5.15";
 import { processString } from "https://esm.sh/uglifycss@0.0.29";
 
@@ -59,10 +59,10 @@ serve(async (request) => {
 			});
 		}
 		content = (
-			<div id="pageContainer">
+			<>
 				<PageForm value={src}></PageForm>
 				<iframe src={src}></iframe>
-			</div>
+			</>
 		);
 	}
 
@@ -83,9 +83,11 @@ serve(async (request) => {
 				{styleComponent}
 			</head>
 			<body>
-				{content}
+				<div id="pageContainer">
+					{content}
+				</div>
 			</body>
-		</html>
+		</html>,
 	);
 	return new Response("<!DOCTYPE html>" + rendered, {
 		headers: {
