@@ -4,6 +4,25 @@ import { processString } from "https://esm.sh/uglifycss@0.0.29";
 
 const dev = Deno.args.includes("--dev");
 
+function PageForm({
+	value = "",
+	autofocus = false,
+}: {
+	value?: string;
+	autofocus?: boolean;
+}) {
+	const inputParams: { autofocus?: boolean } = {};
+	if (autofocus) {
+		inputParams.autofocus = true;
+	}
+	return (
+		<form action="/" method="get">
+			<input name="page" placeholder="Enter a URL" value={value} {...inputParams}></input>
+			<button type="submit">Go</button>
+		</form>
+	);
+}
+
 serve(async (request) => {
 	const url = new URL(request.url);
 
@@ -18,12 +37,7 @@ serve(async (request) => {
 				},
 			});
 		}
-		content = () => (
-			<form action="/" method="get">
-				<input name="page" placeholder="Enter a URL"></input>
-				<button type="submit">Go</button>
-			</form>
-		);
+		content = () => <PageForm autofocus></PageForm>;
 	} else if (url.pathname == "/style.css") {
 		const css = await Deno.readTextFile("./style.css");
 		return new Response(css, {
@@ -44,7 +58,8 @@ serve(async (request) => {
 			});
 		}
 		content = () => (
-			<div id="iframeContainer">
+			<div id="pageContainer">
+				<PageForm value={src}></PageForm>
 				<iframe src={src}></iframe>
 			</div>
 		);
