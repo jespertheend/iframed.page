@@ -6,7 +6,7 @@
 
 import { serve } from "https://deno.land/std@0.185.0/http/mod.ts";
 import { h, renderSSR } from "https://deno.land/x/nano_jsx@v0.0.37/mod.ts";
-import { processString } from "npm:uglifycss@0.0.29";
+import { processString } from "https://esm.sh/uglifycss@0.0.29";
 
 const dev = Deno.args.includes("--dev");
 
