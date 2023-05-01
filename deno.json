@@ -7,6 +7,16 @@
 			"proseWrap": "preserve"
 		}
 	},
+	"compilerOptions": {
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"dom.asynciterable",
+			"deno.ns"
+		],
+		"jsxFactory": "h",
+		"jsxFragmentFactory": "Fragment"
+	},
 	"tasks": {
 		"dev": "deno run --watch=site/static/ --allow-env --allow-read --allow-net=0.0.0.0 main.tsx --dev"
 	}
