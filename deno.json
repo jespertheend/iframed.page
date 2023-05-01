@@ -1,0 +1,22 @@
+{
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"jsxImportSource": "$preact"
+	},
+	"imports": {
+		"$preact": "https://esm.sh/preact@10.13.2",
+		"$preact/": "https://esm.sh/preact@10.13.2/",
+		"$std/": "https://deno.land/std@0.185.0/"
+	},
+	"fmt": {
+		"options": {
+			"indentWidth": 4,
+			"useTabs": true,
+			"lineWidth": 300,
+			"proseWrap": "preserve"
+		}
+	},
+	"tasks": {
+		"dev": "deno run --watch=site/static/ --allow-env --allow-read --allow-net=0.0.0.0 main.tsx --dev"
+	}
+}
