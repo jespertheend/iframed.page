@@ -1,5 +1,6 @@
 import { serve, Status } from "https://deno.land/std@0.185.0/http/mod.ts";
-import { h, renderSSR } from "https://deno.land/x/nano_jsx@v0.0.37/mod.ts";
+import { h, JSX } from "https://esm.sh/preact@10.5.15";
+import { renderToString } from "https://esm.sh/preact-render-to-string@5.1.19?deps=preact@10.5.15";
 import { processString } from "https://esm.sh/uglifycss@0.0.29";
 
 const dev = Deno.args.includes("--dev");
@@ -26,7 +27,7 @@ function PageForm({
 serve(async (request) => {
 	const url = new URL(request.url);
 
-	let content;
+	let content: JSX.Element;
 	if (url.pathname == "/") {
 		const page = url.searchParams.get("page");
 		if (page) {
@@ -37,7 +38,7 @@ serve(async (request) => {
 				},
 			});
 		}
-		content = () => <PageForm autofocus></PageForm>;
+		content = <PageForm autofocus></PageForm>;
 	} else if (url.pathname == "/style.css") {
 		const css = await Deno.readTextFile("./style.css");
 		return new Response(css, {
@@ -57,7 +58,7 @@ serve(async (request) => {
 				},
 			});
 		}
-		content = () => (
+		content = (
 			<div id="pageContainer">
 				<PageForm value={src}></PageForm>
 				<iframe src={src}></iframe>
@@ -65,15 +66,15 @@ serve(async (request) => {
 		);
 	}
 
-	let styleComponent;
+	let styleComponent: JSX.Element;
 	if (dev) {
-		styleComponent = () => <link rel="stylesheet" href="/style.css" type="text/css" />;
+		styleComponent = <link rel="stylesheet" href="/style.css" type="text/css" />;
 	} else {
 		const css = await Deno.readTextFile("./style.css");
-		styleComponent = () => <style>{processString(css)}</style>;
+		styleComponent = <style>{processString(css)}</style>;
 	}
 
-	const rendered = renderSSR(() => (
+	const rendered = renderToString(
 		<html lang="en">
 			<head>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -85,7 +86,7 @@ serve(async (request) => {
 				{content}
 			</body>
 		</html>
-	));
+	);
 	return new Response("<!DOCTYPE html>" + rendered, {
 		headers: {
 			"content-type": "text/html; charset=utf-8",
