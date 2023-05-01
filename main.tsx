@@ -1,5 +1,11 @@
-import { serve, Status } from "https://deno.land/std@0.185.0/http/mod.ts";
-import { renderToString } from "npm:preact-render-to-string@6.0.2";
+/** @jsx h */
+/// <reference no-default-lib="true"/>
+/// <reference lib="dom" />
+/// <reference lib="dom.asynciterable" />
+/// <reference lib="deno.ns" />
+
+import { serve } from "https://deno.land/std@0.185.0/http/mod.ts";
+import { h, renderSSR } from "https://deno.land/x/nano_jsx@v0.0.37/mod.ts";
 import { processString } from "npm:uglifycss@0.0.29";
 
 const dev = Deno.args.includes("--dev");
@@ -39,7 +45,7 @@ serve(async (request) => {
 		styleComponent = <style>{processString(css)}</style>;
 	}
 
-	const rendered = renderToString(
+	const rendered = renderSSR(
 		<html lang="en">
 			<head>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
