@@ -1,4 +1,4 @@
-import { serve, Status } from "$std/http/mod.ts";
+import { serve, Status } from "https://deno.land/std@0.185.0/http/mod.ts";
 import { renderToString } from "npm:preact-render-to-string@6.0.2";
 import { processString } from "npm:uglifycss@0.0.29";
 
