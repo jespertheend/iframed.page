@@ -18,8 +18,8 @@ function PageForm({
 	}
 	return (
 		<form action="/" method="get">
-			<input name="page" placeholder="Enter a URL" value={value} {...inputParams}></input>
-			<button type="submit">Go</button>
+			<input class="styled-input" name="page" placeholder="Enter a URL" value={value} {...inputParams}></input>
+			<button type="submit" class="styled-input">Go</button>
 		</form>
 	);
 }

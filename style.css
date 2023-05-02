@@ -6,6 +6,37 @@ html, body, #pageContainer {
 	box-sizing: border-box;
 }
 
+html {
+	background-color: white;
+}
+
+.styled-input {
+	-webkit-appearance: none;
+	appearance: none;
+	box-shadow: 0px 5px 9px #00000024;
+	padding: 5px 10px;
+	border-radius: 7px;
+	color: black;
+}
+
+.styled-input:focus-visible {
+	border: 1px solid #5db2ff;
+	outline: none;
+}
+
+input.styled-input {
+	border: 1px solid #efefef;
+	background-color: white;
+}
+button.styled-input {
+	background: #e3e3e3;
+	border: 1px solid #dbdbdb;
+	cursor: pointer;
+}
+button.styled-input:active {
+	background: #dfdddd;
+}
+
 #pageContainer {
 	display: flex;
 	padding: 40px;
@@ -17,7 +48,7 @@ html, body, #pageContainer {
 iframe {
 	border: none;
 	flex-grow: 1;
-	box-shadow: 0px 17px 20px #00000061;
+	box-shadow: 0px 17px 20px #00000036;
 }
 
 form {
@@ -35,4 +66,23 @@ form button {
 form input {
 	width: 50vw;
 	max-width: 600px;
+}
+
+@media(prefers-color-scheme: dark){
+	html {
+		background-color: rgb(28, 28, 28);
+	}
+
+	.styled-input {
+		color: white;
+	}
+
+	input.styled-input {
+		border: 1px solid #232323;
+		background-color: #101010;
+	}
+	button.styled-input {
+		background: #393939;
+		border: 1px solid #434343;
+	}
 }
