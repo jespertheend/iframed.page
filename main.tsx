@@ -96,7 +96,8 @@ serve(async (request) => {
 			<head>
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<title>iframe.page</title>
-				<meta name="description" content="Render any page inside an iframe" />
+				<meta name="description" content="A website where you can try how your page behaves when it's embedded inside an iframe." />
+				<link rel="canonical" href="https://iframed.page"></link>
 				{styleComponent}
 			</head>
 			<body>
