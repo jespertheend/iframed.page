@@ -24,6 +24,14 @@ function PageForm({
 	);
 }
 
+function Footer() {
+	return (
+		<div class="footer">
+			<a href="https://github.com/jespertheend/iframed.page" target="_blank">GitHub</a>
+		</div>
+	);
+}
+
 serve(async (request) => {
 	const url = new URL(request.url);
 
@@ -38,7 +46,12 @@ serve(async (request) => {
 				},
 			});
 		}
-		content = <PageForm autofocus></PageForm>;
+		content = (
+			<>
+				<PageForm autofocus></PageForm>
+				<Footer></Footer>
+			</>
+		);
 	} else if (url.pathname == "/style.css") {
 		const css = await Deno.readTextFile("./style.css");
 		return new Response(css, {
