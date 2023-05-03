@@ -59,6 +59,10 @@ serve(async (request) => {
 				"content-type": "text/css",
 			},
 		});
+	} else if (url.pathname == "/robots.txt") {
+		return new Response("not found", {
+			status: Status.NotFound,
+		})
 	} else {
 		const src = url.pathname.substring(1);
 		try {
