@@ -62,9 +62,9 @@ serve(async (request) => {
 	} else if (url.pathname == "/robots.txt") {
 		return new Response("not found", {
 			status: Status.NotFound,
-		})
+		});
 	} else {
-		const src = url.pathname.substring(1);
+		const src = url.pathname.substring(1) + url.search;
 		try {
 			new URL(src);
 		} catch {
