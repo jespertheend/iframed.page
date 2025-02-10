@@ -92,7 +92,7 @@ form input {
 	color: #696969;
 }
 
-@media(prefers-color-scheme: dark){
+@media (prefers-color-scheme: dark) {
 	html {
 		background-color: rgb(28, 28, 28);
 	}
