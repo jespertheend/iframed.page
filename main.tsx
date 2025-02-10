@@ -1,7 +1,7 @@
 import { serve, Status } from "https://deno.land/std@0.185.0/http/mod.ts";
-import { Fragment, h, JSX } from "https://esm.sh/preact@10.5.15";
-import { renderToString } from "https://esm.sh/preact-render-to-string@5.1.19?deps=preact@10.5.15";
-import { processString } from "https://esm.sh/uglifycss@0.0.29";
+import { Fragment, h, JSX } from "npm:preact@10.5.15";
+import { renderToString } from "npm:preact-render-to-string@5.1.19";
+import { processString } from "npm:uglifycss@0.0.29";
 
 const dev = Deno.args.includes("--dev");
 
