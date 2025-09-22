@@ -59,6 +59,13 @@ serve(async (request) => {
 				"content-type": "text/css",
 			},
 		});
+	} else if (url.pathname == "/script.js") {
+		const css = await Deno.readTextFile("./script.js");
+		return new Response(css, {
+			headers: {
+				"content-type": "text/javascript; charset=UTF-8",
+			},
+		});
 	} else if (url.pathname == "/robots.txt") {
 		return new Response("not found", {
 			status: Status.NotFound,
@@ -100,6 +107,7 @@ serve(async (request) => {
 				<meta name="description" content="A website where you can try how your page behaves when it's embedded inside an iframe." />
 				<link rel="canonical" href="https://iframed.page"></link>
 				{styleComponent}
+				<script type="module" src="/script.js"></script>
 			</head>
 			<body>
 				<div id="pageContainer">
